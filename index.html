@@ -3,817 +3,681 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#10172a">
-<meta name="description" content="A graduation celebration and curated photo gallery.">
-<title>My Graduation | A Milestone Achieved</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#10131c">
+<title>GEOFRY | Private Photo Gallery</title>
+<meta name="description" content="Explore the GEOFRY photography collection.">
 <style>
 :root {
-  --navy:#10172a;
-  --navy2:#19233b;
-  --gold:#e7bd62;
-  --cream:#fff9ee;
-  --muted:#c9ceda;
-  --line:#ffffff20;
+  --bg: #10131c;
+  --panel: #191e2b;
+  --panel2: #202738;
+  --text: #f7f8fc;
+  --muted: #a7b0c2;
+  --accent: #c9a96e;
+  --border: rgba(255,255,255,.1);
+  --radius: 18px;
 }
-* { box-sizing:border-box; }
-html { scroll-behavior:smooth; scroll-padding-top:90px; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 body {
-  margin:0;
-  background:var(--navy);
-  color:var(--cream);
-  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  line-height:1.6;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
 }
-a { color:inherit; }
+button, input { font: inherit; }
+button { cursor: pointer; }
+a { color: inherit; }
+header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(16,19,28,.92);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+.nav {
+  max-width: 1400px;
+  margin: auto;
+  padding: 17px 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+.brand {
+  font-weight: 900;
+  letter-spacing: 2px;
+  font-size: 20px;
+}
+.brand span { color: var(--accent); }
+.nav-note { color: var(--muted); font-size: 13px; }
 .hero {
-  min-height:82vh;
-  display:grid;
-  place-items:center;
-  text-align:center;
-  padding:75px 22px;
-  position:relative;
-  overflow:hidden;
-  background:radial-gradient(ellipse at top,#28395b 0%,#10172a 64%);
+  padding: 76px 5% 48px;
+  max-width: 1400px;
+  margin: auto;
 }
-.hero:before,.hero:after {
-  content:"✦";
-  position:absolute;
-  color:#e7bd6228;
-  font-size:clamp(100px,24vw,280px);
-  line-height:1;
-  pointer-events:none;
-}
-.hero:before { left:-35px;top:4%; }
-.hero:after { right:-20px;bottom:2%;font-size:clamp(80px,18vw,210px); }
-.content { position:relative;z-index:1;max-width:850px; }
-.kicker {
-  color:var(--gold);
-  font-weight:800;
-  letter-spacing:.18em;
-  text-transform:uppercase;
-  font-size:.76rem;
+.eyebrow {
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 12px;
+  font-weight: 800;
 }
 h1 {
-  font-family:Georgia,"Times New Roman",serif;
-  font-size:clamp(3rem,9vw,6.5rem);
-  line-height:1.02;
-  margin:18px 0;
-  color:#fff;
+  font-size: clamp(38px, 6vw, 72px);
+  line-height: 1.04;
+  margin: 18px 0;
+  letter-spacing: -2px;
 }
-.gold { color:var(--gold); }
-.subtitle {
-  font-size:clamp(1rem,2.5vw,1.3rem);
-  color:var(--muted);
-  max-width:650px;
-  margin:0 auto 30px;
+h1 span { color: var(--accent); }
+.hero p {
+  color: var(--muted);
+  max-width: 620px;
+  line-height: 1.8;
 }
-.button {
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
-  text-decoration:none;
-  background:var(--gold);
-  color:#11182b;
-  padding:13px 23px;
-  border:0;
-  border-radius:999px;
-  font-weight:800;
-  cursor:pointer;
-  transition:transform .2s,filter .2s;
-}
-.button:hover { transform:translateY(-2px);filter:brightness(1.05); }
-.button.secondary {
-  background:transparent;
-  color:var(--cream);
-  border:1px solid #ffffff42;
-}
-.button.small { padding:9px 15px;font-size:.9rem; }
-section { padding:70px 20px; }
-.wrap { width:min(100%,1120px);margin:auto; }
-.section-title {
-  text-align:center;
-  font-family:Georgia,"Times New Roman",serif;
-  font-size:clamp(2rem,5vw,3.2rem);
-  line-height:1.15;
-  margin:0 0 12px;
-}
-.lead {
-  text-align:center;
-  color:var(--muted);
-  max-width:720px;
-  margin:0 auto 30px;
-}
-.video-card {
-  background:var(--navy2);
-  border:1px solid var(--line);
-  border-radius:22px;
-  padding:12px;
-  box-shadow:0 20px 60px #0005;
-}
-video {
-  display:block;
-  width:100%;
-  max-height:72vh;
-  background:#05070d;
-  border-radius:14px;
-}
-.video-note {
-  text-align:center;
-  color:var(--muted);
-  font-size:.9rem;
-  margin:12px 0 2px;
-}
-.message { background:var(--cream);color:#172039;text-align:center; }
-.message .section-title { color:#172039; }
-.message .kicker { color:#8d6820; }
-.message p { max-width:750px;margin:18px auto;font-size:1.08rem; }
-.cards {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:16px;
-  margin-top:35px;
-}
-.card {
-  padding:24px 18px;
-  border:1px solid var(--line);
-  border-radius:16px;
-  background:var(--navy2);
-  text-align:center;
-}
-.card .symbol { font-size:2rem; }
-.card h3 { color:var(--gold);margin:8px 0; }
-.card p { color:var(--muted);font-size:.95rem;margin:0; }
-.gallery-section { background:linear-gradient(180deg,#10172a,#141e34); }
-.gallery-tools {
-  display:flex;
-  gap:12px;
-  align-items:center;
-  flex-wrap:wrap;
-  margin:28px 0 18px;
+.toolbar {
+  max-width: 1400px;
+  margin: 0 auto 26px;
+  padding: 0 5%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
 }
 .search {
-  flex:1;
-  min-width:200px;
-  background:#0c1222;
-  color:var(--cream);
-  border:1px solid #ffffff2c;
-  border-radius:12px;
-  padding:13px 15px;
-  font:inherit;
-  outline:none;
+  flex: 1;
+  min-width: 220px;
+  position: relative;
 }
-.search:focus,.password-input:focus { border-color:var(--gold); }
-.filter {
-  background:#19233b;
-  color:var(--cream);
-  border:1px solid #ffffff2c;
-  border-radius:12px;
-  padding:12px 14px;
-  font:inherit;
+.search input {
+  width: 100%;
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 16px;
+  outline: none;
 }
-.gallery-status { color:var(--muted);font-size:.92rem;margin:0 0 14px; }
+.search input:focus { border-color: var(--accent); }
+.btn {
+  border: 1px solid var(--border);
+  color: var(--text);
+  background: var(--panel2);
+  border-radius: 12px;
+  padding: 13px 17px;
+  font-weight: 700;
+  transition: .2s;
+}
+.btn:hover { transform: translateY(-1px); border-color: var(--accent); }
+.btn.primary {
+  color: #17130d;
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.status {
+  max-width: 1400px;
+  margin: 0 auto 20px;
+  padding: 0 5%;
+  color: var(--muted);
+  font-size: 13px;
+}
 .gallery {
-  display:grid;
-  grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:15px;
+  max-width: 1400px;
+  padding: 0 5% 70px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
 }
 .photo {
-  overflow:hidden;
-  border:1px solid var(--line);
-  border-radius:16px;
-  background:#19233b;
-  min-width:0;
-  transition:transform .2s,border-color .2s;
+  min-width: 0;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform .25s, border-color .25s;
 }
-.photo:hover { transform:translateY(-3px);border-color:#e7bd6270; }
-.photo-image {
-  width:100%;
-  aspect-ratio:4/3;
-  display:block;
-  object-fit:cover;
-  background:linear-gradient(135deg,#28395b,#10172a);
-  cursor:zoom-in;
+.photo:hover {
+  transform: translateY(-4px);
+  border-color: rgba(201,169,110,.65);
 }
-.photo-image.missing { object-fit:contain;padding:25px;color:#c9ceda; }
-.photo-info { padding:12px; }
-.photo-name {
-  font-weight:750;
-  font-size:.92rem;
-  overflow-wrap:anywhere;
-  margin:0 0 8px;
+.image-wrap {
+  height: 245px;
+  background: #222938;
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
 }
-.photo-actions { display:flex;align-items:center;justify-content:space-between;gap:8px; }
-.select-label {
-  display:flex;
-  align-items:center;
-  gap:7px;
-  color:var(--muted);
-  font-size:.85rem;
-  cursor:pointer;
+.image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  cursor: zoom-in;
+  transition: transform .4s;
 }
-.select-label input { accent-color:var(--gold);width:17px;height:17px; }
-.text-button {
-  background:none;
-  color:var(--gold);
-  border:0;
-  padding:4px 0;
-  font:inherit;
-  font-size:.85rem;
-  cursor:pointer;
+.photo:hover .image-wrap img { transform: scale(1.04); }
+.image-error {
+  padding: 20px;
+  color: var(--muted);
+  text-align: center;
+  font-size: 13px;
 }
-.text-button:hover { text-decoration:underline; }
-.save-panel {
-  display:flex;
-  gap:12px;
-  align-items:center;
-  justify-content:space-between;
-  flex-wrap:wrap;
-  padding:17px 18px;
-  background:#19233b;
-  border:1px solid #ffffff25;
-  border-radius:16px;
-  margin:0 0 18px;
+.photo-info { padding: 15px; }
+.filename {
+  font-size: 14px;
+  font-weight: 750;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 12px;
 }
-.save-panel p { margin:0;color:var(--muted);font-size:.9rem; }
-.save-panel strong { color:var(--cream); }
-.notice { color:var(--muted);font-size:.9rem;max-width:850px;margin:18px auto 0; }
+.photo-actions { display: flex; gap: 8px; }
+.photo-actions button {
+  flex: 1;
+  padding: 10px 8px;
+  border-radius: 9px;
+  font-size: 12px;
+}
 .empty {
-  grid-column:1/-1;
-  padding:35px;
-  text-align:center;
-  color:var(--muted);
-  border:1px dashed #ffffff35;
-  border-radius:16px;
+  grid-column: 1/-1;
+  text-align: center;
+  padding: 65px 20px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
 }
+.empty h2 { margin-top: 0; }
+.empty p { color: var(--muted); line-height: 1.7; }
+.spinner {
+  width: 35px;
+  height: 35px;
+  border: 3px solid #343b4c;
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin .8s linear infinite;
+  margin: 0 auto 16px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
 footer {
-  text-align:center;
-  padding:28px 18px;
-  color:var(--muted);
-  border-top:1px solid #ffffff18;
-  font-size:.9rem;
+  border-top: 1px solid var(--border);
+  padding: 28px 5%;
+  color: var(--muted);
+  text-align: center;
+  font-size: 13px;
 }
-.modal-backdrop {
-  position:fixed;
-  inset:0;
-  background:#050914d9;
-  display:none;
-  place-items:center;
-  padding:18px;
-  z-index:50;
-}
-.modal-backdrop.open { display:grid; }
 .modal {
-  width:min(100%,430px);
-  background:#19233b;
-  border:1px solid #ffffff2b;
-  border-radius:22px;
-  padding:26px;
-  box-shadow:0 25px 80px #0009;
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(0,0,0,.82);
+  backdrop-filter: blur(10px);
 }
-.modal h2 { font-family:Georgia,serif;margin:0 0 8px;font-size:1.8rem; }
-.modal p { color:var(--muted);margin:0 0 18px; }
-.password-input {
-  width:100%;
-  padding:13px 14px;
-  border-radius:11px;
-  border:1px solid #ffffff38;
-  background:#0c1222;
-  color:white;
-  font:inherit;
-  outline:none;
+.modal.open { display: flex; }
+.modal-box {
+  width: min(440px, 100%);
+  padding: 28px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--panel);
+  box-shadow: 0 25px 100px #0008;
 }
-.modal-actions { display:flex;gap:10px;flex-wrap:wrap;margin-top:15px; }
-.error { min-height:1.5em;color:#ffb4a8;font-size:.9rem;margin-top:9px; }
+.modal-box h2 { margin-top: 0; }
+.modal-box p { color: var(--muted); line-height: 1.65; font-size: 14px; }
+.modal-box input {
+  width: 100%;
+  padding: 14px;
+  margin: 10px 0;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #10131c;
+  color: white;
+  outline: none;
+}
+.modal-box input:focus { border-color: var(--accent); }
+.modal-actions { display: flex; gap: 10px; margin-top: 12px; }
+.modal-actions button { flex: 1; }
+#passwordError { min-height: 20px; color: #ff8f8f; font-size: 13px; }
 .lightbox {
-  position:fixed;
-  inset:0;
-  display:none;
-  place-items:center;
-  background:#050914f2;
-  padding:24px;
-  z-index:40;
+  position: fixed;
+  inset: 0;
+  z-index: 25;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,.94);
+  padding: 55px 18px 25px;
 }
-.lightbox.open { display:grid; }
+.lightbox.open { display: flex; }
 .lightbox img {
-  max-width:min(100%,1100px);
-  max-height:82vh;
-  object-fit:contain;
+  max-width: 100%;
+  max-height: 85vh;
+  object-fit: contain;
 }
-.lightbox-close {
-  position:absolute;
-  right:18px;
-  top:12px;
-  font-size:2rem;
-  color:white;
-  background:transparent;
-  border:0;
-  cursor:pointer;
+.close-lightbox {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  border: 1px solid var(--border);
+  color: white;
+  background: var(--panel);
+  padding: 10px 15px;
+  border-radius: 10px;
 }
-@media(max-width:900px) {
-  .gallery { grid-template-columns:repeat(3,minmax(0,1fr)); }
+@media(max-width:1100px) {
+  .gallery { grid-template-columns: repeat(3,minmax(0,1fr)); }
 }
-@media(max-width:650px) {
-  .gallery { grid-template-columns:repeat(2,minmax(0,1fr));gap:10px; }
-  .photo-info { padding:10px; }
-  .cards { grid-template-columns:1fr; }
-  .hero { min-height:75vh; }
-  section { padding:54px 17px; }
-  .save-panel { align-items:flex-start; }
-  .save-panel .button { width:100%; }
+@media(max-width:760px) {
+  .gallery { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; }
+  .image-wrap { height: 210px; }
+  .hero { padding-top: 55px; }
+  .nav-note { display: none; }
 }
-@media(max-width:380px) {
-  .gallery { grid-template-columns:1fr; }
-  .photo-image { aspect-ratio:16/10; }
+@media(max-width:440px) {
+  .gallery { grid-template-columns: 1fr; }
+  .image-wrap { height: 270px; }
+  .photo-info { padding: 13px; }
 }
 </style>
 </head>
-
 <body>
 
-<header class="hero">
-  <div class="content">
-    <div class="kicker">A journey of courage, faith & determination</div>
-    <h1>My Graduation,<br><span class="gold">My Victory.</span></h1>
-    <p class="subtitle">A milestone achieved. Every sleepless night, every challenge, and every sacrifice has led to this moment.</p>
-    <a class="button" href="#celebration">Celebrate This Milestone ↓</a>
-    <a class="button secondary" href="#gallery" style="margin-left:8px">Explore Photo Gallery</a>
+<header>
+  <div class="nav">
+    <div class="brand">GEOFRY<span>.</span></div>
+    <div class="nav-note">PERSONAL PHOTOGRAPHY COLLECTION</div>
   </div>
 </header>
 
-<section id="celebration">
-  <div class="wrap">
-    <h2 class="section-title">The Moment, <span class="gold">Captured.</span></h2>
-    <p class="lead">Press play and relive a special chapter in the journey.</p>
-    <div class="video-card">
-      <video controls playsinline preload="metadata">
-        <source src="graduation-video.mp4" type="video/mp4">
-        Your browser does not support HTML video.
-      </video>
-      <p class="video-note">Your graduation video · Turn the sound on and enjoy the moment.</p>
+<main>
+  <section class="hero">
+    <div class="eyebrow">A collection of moments</div>
+    <h1>Every picture tells<br>a <span>story.</span></h1>
+    <p>
+      Explore the GEOFRY photography collection — a curated gallery
+      of memories, perspectives, and remarkable moments.
+    </p>
+  </section>
+
+  <section class="toolbar">
+    <div class="search">
+      <input id="searchInput" type="search"
+        placeholder="Search photos by filename..."
+        aria-label="Search photos">
     </div>
-  </div>
-</section>
+    <button class="btn" id="refreshButton">↻ Refresh gallery</button>
+  </section>
 
-<section class="message">
-  <div class="wrap">
-    <div class="kicker">One chapter complete. Another begins.</div>
-    <h2 class="section-title">A Milestone <span class="gold">Achieved.</span></h2>
-    <p>This achievement is more than a certificate; it is proof that patience, discipline, and persistence can turn a dream into reality. The journey was not always easy, but every step mattered.</p>
-    <p>To my family, friends, mentors, and everyone who stood by me: thank you for your encouragement, prayers, and belief in me. This victory carries a piece of every person who helped me keep going.</p>
-    <p><strong>The dream continues. The work continues. This is only the beginning.</strong></p>
+  <div class="status" id="status" aria-live="polite">
+    Connecting to the photo collection...
   </div>
-</section>
 
-<section>
-  <div class="wrap">
-    <h2 class="section-title">Built on <span class="gold">More Than Success</span></h2>
-    <p class="lead">The lessons behind the achievement are just as important as the moment itself.</p>
-    <div class="cards">
-      <div class="card"><div class="symbol">🎓</div><h3>Determination</h3><p>Keep moving forward, even when the road is difficult.</p></div>
-      <div class="card"><div class="symbol">🤝</div><h3>Brotherhood</h3><p>We rise higher when we support and celebrate one another.</p></div>
-      <div class="card"><div class="symbol">🙏</div><h3>Gratitude</h3><p>Never forget the people who helped make the journey possible.</p></div>
+  <section class="gallery" id="gallery" aria-label="Photo gallery">
+    <div class="empty">
+      <div class="spinner"></div>
+      <h2>Loading your gallery</h2>
+      <p>Finding available photos...</p>
     </div>
-  </div>
-</section>
+  </section>
+</main>
 
-<section class="gallery-section" id="gallery">
-  <div class="wrap">
-    <div class="kicker" style="text-align:center">A curated collection</div>
-    <h2 class="section-title">Photo <span class="gold">Gallery.</span></h2>
-    <p class="lead">Browse your collection, search by filename, preview photos, and select images to save.</p>
+<footer>
+  © <span id="year"></span> GEOFRY. All rights reserved.
+</footer>
 
-    <div class="gallery-tools">
-      <input class="search" id="search" type="search" placeholder="Search photos…" aria-label="Search photos">
-      <select class="filter" id="filter" aria-label="Filter photos">
-        <option value="all">All photos</option>
-        <option value="a-m">A–M</option>
-        <option value="n-z">N–Z</option>
-      </select>
-    </div>
-
-    <div class="save-panel">
-      <div>
-        <strong><span id="selectedCount">0</span> selected</strong>
-        <p>Select photos, then enter the owner password to unlock saving.</p>
-      </div>
-      <button class="button" id="saveSelected" type="button">🔒 Save selected images</button>
-    </div>
-
-    <p class="gallery-status" id="galleryStatus" aria-live="polite">Loading photos…</p>
-    <div class="gallery" id="galleryGrid"></div>
-
-    <p class="notice"><strong>Image setup:</strong> Put all the image files inside a folder named <code>images</code> beside this HTML file. Every filename must match exactly, including uppercase/lowercase letters, spaces, and extensions.</p>
-    <p class="notice"><strong>HEIC note:</strong> Some browsers cannot preview HEIC files. For reliable gallery previews, convert HEIC images to JPG or WebP. Keep the original HEIC files if you need to save them in their original format.</p>
-    <p class="notice"><strong>Privacy:</strong> This HTML-only password gate is a convenience feature, not strong security. The password is visible in the page's JavaScript, and public image URLs may still be downloaded. Genuine owner-only access requires server-side authentication or private storage.</p>
-  </div>
-</section>
-
-<footer>Made to celebrate a meaningful milestone · <span class="gold">The journey continues.</span></footer>
-
-<div class="modal-backdrop" id="passwordModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-  <div class="modal">
-    <h2 id="modalTitle">Owner verification</h2>
-    <p>Enter the owner password to unlock saving for your selected photos.</p>
+<!-- Password dialog -->
+<div class="modal" id="passwordModal" role="dialog"
+  aria-modal="true" aria-labelledby="passwordTitle">
+  <div class="modal-box">
+    <div class="eyebrow">Protected download</div>
+    <h2 id="passwordTitle">Enter your password</h2>
+    <p>Enter the authorized password to download this image.</p>
     <form id="passwordForm">
-      <input class="password-input" id="passwordInput" type="password" autocomplete="current-password" placeholder="Enter password" aria-label="Owner password" required>
-      <div class="error" id="passwordError" aria-live="polite"></div>
+      <input id="passwordInput" type="password"
+        placeholder="Enter password"
+        autocomplete="current-password" required>
+      <div id="passwordError" aria-live="polite"></div>
       <div class="modal-actions">
-        <button class="button" type="submit">Unlock saving</button>
-        <button class="button secondary" type="button" id="cancelModal">Cancel</button>
+        <button type="button" class="btn" id="cancelPassword">Cancel</button>
+        <button type="submit" class="btn primary">Unlock download</button>
       </div>
     </form>
   </div>
 </div>
 
-<div class="lightbox" id="lightbox" aria-modal="true" role="dialog" aria-label="Photo preview">
-  <button class="lightbox-close" id="closeLightbox" aria-label="Close preview">×</button>
-  <img id="lightboxImage" src="" alt="">
+<!-- Image preview -->
+<div class="lightbox" id="lightbox" role="dialog"
+  aria-modal="true" aria-label="Photo preview">
+  <button class="close-lightbox" id="closeLightbox">✕ Close</button>
+  <img id="lightboxImage" alt="Enlarged photo preview">
 </div>
 
 <script>
+"use strict";
+
 /*
-  IMAGE FILENAMES
-  All names below are kept exactly as supplied.
-  Files must be inside the images folder next to index.html.
+  CONFIGURATION
+  The repository is public, so the password below only protects
+  the download button in this webpage. It does not secure the
+  original files from people who know their public URLs.
 */
-const photoFiles = [
-  "RELENTLESS  (69).heic",
-  "RELENTLESS  (70).heic",
-  "RELENTLESS  (71).heic",
-  "RELENTLESS  (72).heic",
-  "amber-leaves.jpg.jpg",
-  "artful-capture.jpg.JPG",
-  "autumn-colors.jpg.heic",
-  "autumn-glow.jpg.heic",
-  "azure-skies.jpg.heic",
-  "beautiful-journey.jpg.heic",
-  "blossom-trail.jpg.heic",
-  "blue-horizon.jpg.heic",
-  "blue-lagoon.jpg.heic",
-  "bold-expression.jpg.JPG",
-  "bright-morning.jpg.jpg",
-  "bright-outlook.jpg.heic",
-  "bright-spark.jpg.JPG",
-  "charming-view.jpg.heic",
-  "chasing-light.jpg.jpg",
-  "city-symphony.jpg.heic",
-  "classic-charm.jpg.heic",
-  "classic-moment.jpg.heic",
-  "cloud-nine.jpg.png",
-  "copper-sky.jpg.png",
-  "coral-dream.jpg.jpg",
-  "cosmic-beauty.jpg.heic",
-  "crimson-dawn.jpg.heic",
-  "crystal-moment.jpg.png",
-  "crystal-waters.jpg.heic",
-  "desert-mirage.jpg.png",
-  "diamond-light.jpg.png",
-  "distant-shores.jpg.jpg",
-  "dream-catcher.jpg.heic",
-  "dreamscape-view.jpg.jpg",
-  "dreamy-landscape.jpg.png",
-  "elegant-frame.jpg.heic",
-  "emerald-garden.jpg.heic",
-  "endless-summer.jpg.heic",
-  "forest-echo.jpg.heic",
-  "fresh-perspective.jpg.png",
-  "frosted-glass.jpg.heic",
-  "frozen-moment.jpg.heic",
-  "gentle-bloom.jpg.heic",
-  "glimmering-star.jpg.heic",
-  "glowing-pixels.jpg.heic",
-  "golden-hour.jpg.jpg",
-  "golden-meadow.jpg.heic",
-  "golden-sunset.jpg.heic",
-  "happy-memories.jpg.heic",
-  "happy-trails.jpg.JPG",
-  "heavenly-view.jpg.heic",
-  "hidden-beauty.jpg.jpg",
-  "hidden-treasure.jpg.heic",
-  "infinite-blue.jpg.heic",
-  "ivory-glow.jpg.JPG",
-  "jade-garden.jpg.heic",
-  "lasting-impression.jpg.heic",
-  "lively-moments.jpg.heic",
-  "lively-portrait.jpg.heic",
-  "lunar-shadow.jpg.heic",
-  "magic-hour.jpg.jpg",
-  "midnight-glow.jpg.JPG",
-  "misty-morning.jpg.heic",
-  "modern-elegance.jpg.jpg",
-  "moonlight-dream.jpg.heic",
-  "moonlit-path.jpg.png",
-  "morning-dew.jpg.JPG",
-  "mystic-forest.jpg.png",
-  "natural-wonder.jpg.JPG",
-  "nature-canvas.jpg.heic",
-  "noble-presence.jpg.heic",
-  "oasis-view.jpg.heic",
-  "ocean-breeze.jpg.heic",
-  "ocean-mystery.jpg.heic",
-  "open-meadow.jpg.jpg",
-  "peaceful-place.jpg.JPG",
-  "peaceful-valley.jpg.jpg",
-  "pearl-shimmer.jpg.jpg",
-  "perfect-pose.jpg.heic",
-  "precious-scene.jpg.heic",
-  "pure-serenity.jpg.heic",
-  "purple-dusk.jpg.jpg",
-  "quiet-moment.jpg.heic",
-  "radiant-horizon.jpg.png",
-  "radiant-petals.jpg.jpg",
-  "radiant-smile.jpg.heic",
-  "rainbow-trail.jpg.jpg",
-  "royal-vision.jpg.heic",
-  "ruby-reflection.jpg.heic",
-  "sapphire-night.jpg.png",
-  "scarlet-petal.jpg.heic",
-  "secret-garden.jpg.heic",
-  "serene-reflection.jpg.heic",
-  "silent-mountain.jpg.JPG",
-  "silver-cloud.jpg.heic",
-  "silver-lining.jpg.JPG",
-  "soft-focus.jpg.heic",
-  "soft-sunshine.jpg.heic",
-  "starlight-scene.jpg.heic",
-  "stellar-view.jpg.JPG",
-  "summer-bloom.jpg.jpg",
-  "summer-whisper.jpg.heic",
-  "sun-kissed.jpg.JPG",
-  "sunrise-glory.jpg.JPG",
-  "timeless-frame.jpg.heic",
-  "timeless-magic.jpg.heic",
-  "true-colors.jpg.heic",
-  "unique-perspective.jpg.jpg",
-  "urban-dream.jpg.jpg",
-  "urban-lights.jpg.heic",
-  "velvet-dawn.jpg.jpg",
-  "velvet-rose.jpg.heic",
-  "velvet-sky.jpg.heic",
-  "vivid-colors.jpg.heic",
-  "vivid-harmony.jpg.jpg",
-  "wild-spirit.jpg.heic",
-  "wildflower-mood.jpg.heic",
-  "winter-whisper.jpg.png",
-  "wonderland-scene.jpg.heic"
-];
+const CONFIG = {
+  owner: "geofry254",
+  repository: "GEO",
+  branch: "", // Optional: enter your branch name, e.g. "main".
+  password: "GEOFRY",
+  // Use "" when photos are beside index.html.
+  // Use "images/" if photos are inside an images folder.
+  imageFolder: "",
+  allowedExtensions: [
+    "jpg", "jpeg", "png", "gif", "webp", "avif",
+    "bmp", "svg"
+  ]
+};
 
-const OWNER_PASSWORD = "GEOFRY";
-const IMAGE_FOLDER = "images/";
-
-const galleryGrid = document.getElementById("galleryGrid");
-const searchInput = document.getElementById("search");
-const filterSelect = document.getElementById("filter");
-const selectedCount = document.getElementById("selectedCount");
-const galleryStatus = document.getElementById("galleryStatus");
+const gallery = document.getElementById("gallery");
+const statusText = document.getElementById("status");
+const searchInput = document.getElementById("searchInput");
 const passwordModal = document.getElementById("passwordModal");
 const passwordInput = document.getElementById("passwordInput");
 const passwordError = document.getElementById("passwordError");
+const lightbox = document.getElementById("lightbox");
+const lightboxImage = document.getElementById("lightboxImage");
 
-const selected = new Set();
+let allPhotos = [];
+let pendingDownload = null;
 
-function imageURL(filename) {
-  return IMAGE_FOLDER + encodeURIComponent(filename).replace(/%2F/gi, "/");
+document.getElementById("year").textContent = new Date().getFullYear();
+
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, character => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
+  })[character]);
 }
 
-function displayName(filename) {
-  return filename;
+function isPhotoFile(filename) {
+  const extension = filename.split(".").pop().toLowerCase();
+  return CONFIG.allowedExtensions.includes(extension);
 }
 
-function makePlaceholder(filename) {
-  return "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(`
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450">
-      <rect width="600" height="450" fill="#19233b"/>
-      <text x="300" y="190" fill="#e7bd62" font-size="30" text-anchor="middle">PHOTO PREVIEW</text>
-      <text x="300" y="235" fill="#c9ceda" font-size="17" text-anchor="middle">Preview unavailable</text>
-      <text x="300" y="275" fill="#c9ceda" font-size="13" text-anchor="middle">${escapeSVG(filename)}</text>
-    </svg>
-  `);
+function isHeicFile(filename) {
+  return /\.(heic|heif)$/i.test(filename);
 }
 
-function escapeSVG(value) {
-  return String(value).replace(/[&<>"']/g, char => ({
-    "&":"&amp;",
-    "<":"&lt;",
-    ">":"&gt;",
-    '"':"&quot;",
-    "'":"&apos;"
-  })[char]);
+function showMessage(title, message, retry = false) {
+  gallery.innerHTML = `
+    <div class="empty">
+      <h2>${escapeHTML(title)}</h2>
+      <p>${escapeHTML(message)}</p>
+      ${retry ? '<button class="btn primary" id="retryButton">Try again</button>' : ""}
+    </div>`;
+  const retryButton = document.getElementById("retryButton");
+  if (retryButton) retryButton.addEventListener("click", loadPhotos);
 }
 
-function makePhotoCard(filename) {
-  const card = document.createElement("article");
-  card.className = "photo";
-  card.dataset.name = filename;
+async function loadPhotos() {
+  gallery.innerHTML = `
+    <div class="empty">
+      <div class="spinner"></div>
+      <h2>Loading your gallery</h2>
+      <p>Connecting to GitHub...</p>
+    </div>`;
+  statusText.textContent = "Loading photo files from GitHub...";
 
-  const img = document.createElement("img");
-  img.className = "photo-image";
-  img.src = imageURL(filename);
-  img.alt = displayName(filename);
-  img.loading = "lazy";
+  try {
+    const branchPart = CONFIG.branch
+      ? `?ref=${encodeURIComponent(CONFIG.branch)}`
+      : "";
+    const apiURL =
+      `https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repository}/contents/${CONFIG.imageFolder}${branchPart}`;
 
-  img.addEventListener("click", () => {
-    if (!img.classList.contains("missing")) {
-      openLightbox(img.src, filename);
-    }
-  });
-
-  img.addEventListener("error", () => {
-    img.classList.add("missing");
-    img.src = makePlaceholder(filename);
-    img.alt = "Preview unavailable: " + filename;
-    img.style.cursor = "default";
-  }, { once:true });
-
-  const info = document.createElement("div");
-  info.className = "photo-info";
-
-  const title = document.createElement("p");
-  title.className = "photo-name";
-  title.textContent = displayName(filename);
-
-  const actions = document.createElement("div");
-  actions.className = "photo-actions";
-
-  const label = document.createElement("label");
-  label.className = "select-label";
-
-  const checkbox = document.createElement("input");
-  checkbox.type = "checkbox";
-  checkbox.checked = selected.has(filename);
-  checkbox.setAttribute("aria-label", "Select " + filename);
-
-  checkbox.addEventListener("change", () => {
-    if (checkbox.checked) {
-      selected.add(filename);
-    } else {
-      selected.delete(filename);
-    }
-    updateSelectedCount();
-  });
-
-  label.append(checkbox, document.createTextNode(" Select"));
-
-  const saveOne = document.createElement("button");
-  saveOne.className = "text-button";
-  saveOne.type = "button";
-  saveOne.textContent = "Save";
-
-  saveOne.addEventListener("click", () => {
-    selected.add(filename);
-    updateSelectedCount();
-    requestPassword();
-  });
-
-  actions.append(label, saveOne);
-  info.append(title, actions);
-  card.append(img, info);
-
-  return card;
-}
-
-function renderGallery() {
-  const query = searchInput.value.trim().toLowerCase();
-  const range = filterSelect.value;
-
-  const filtered = photoFiles.filter(filename => {
-    const lower = filename.toLowerCase();
-    const matchesSearch = lower.includes(query);
-
-    const first = filename.trimStart().charAt(0).toLowerCase();
-    const matchesRange =
-      range === "all" ||
-      (range === "a-m" && first >= "a" && first <= "m") ||
-      (range === "n-z" && first >= "n" && first <= "z");
-
-    return matchesSearch && matchesRange;
-  });
-
-  galleryGrid.replaceChildren();
-
-  if (!filtered.length) {
-    const empty = document.createElement("div");
-    empty.className = "empty";
-    empty.textContent = "No photos match your search.";
-    galleryGrid.append(empty);
-  } else {
-    filtered.forEach(filename => {
-      galleryGrid.append(makePhotoCard(filename));
+    const response = await fetch(apiURL, {
+      headers: { "Accept": "application/vnd.github+json" }
     });
-  }
 
-  galleryStatus.textContent =
-    `Showing ${filtered.length} of ${photoFiles.length} photos.`;
-
-  updateSelectedCount();
-}
-
-function updateSelectedCount() {
-  selectedCount.textContent = selected.size;
-
-  document.querySelectorAll(".photo").forEach(card => {
-    const checkbox = card.querySelector('input[type="checkbox"]');
-    if (checkbox) {
-      checkbox.checked = selected.has(card.dataset.name);
+    if (!response.ok) {
+      if (response.status === 404) {
+        throw new Error(
+          "GitHub could not find the repository, branch, or photo folder. " +
+          "Check the repository name, branch, and imageFolder setting."
+        );
+      }
+      if (response.status === 403) {
+        throw new Error(
+          "GitHub has temporarily limited requests. Wait a little and refresh."
+        );
+      }
+      throw new Error(`GitHub returned an error (${response.status}).`);
     }
-  });
+
+    const files = await response.json();
+
+    if (!Array.isArray(files)) {
+      throw new Error("The selected location is not a photo directory.");
+    }
+
+    allPhotos = files
+      .filter(file => file.type === "file" && isPhotoFile(file.name))
+      .map(file => ({
+        name: file.name,
+        url: file.download_url,
+        previewURL: file.download_url
+      }))
+      .sort((a, b) => a.name.localeCompare(b.name));
+
+    renderPhotos();
+
+    if (allPhotos.length === 0) {
+      statusText.textContent = "No supported photos were found.";
+      showMessage(
+        "No photos found",
+        "Put JPG, JPEG, PNG, GIF, WebP, or AVIF images in the configured folder and commit them to GitHub."
+      );
+      return;
+    }
+
+    statusText.textContent =
+      `${allPhotos.length} photo${allPhotos.length === 1 ? "" : "s"} available`;
+
+  } catch (error) {
+    console.error("Gallery loading error:", error);
+    statusText.textContent = "The gallery could not be loaded.";
+    showMessage(
+      "Unable to load photos",
+      error.message || "Please check your internet connection and try again.",
+      true
+    );
+  }
 }
 
-function requestPassword() {
-  if (selected.size === 0) {
-    galleryStatus.textContent = "Select at least one photo before saving.";
+function renderPhotos() {
+  const query = searchInput.value.trim().toLowerCase();
+  const filtered = allPhotos.filter(photo =>
+    photo.name.toLowerCase().includes(query)
+  );
+
+  statusText.textContent =
+    `${filtered.length} of ${allPhotos.length} photo${allPhotos.length === 1 ? "" : "s"}`;
+
+  if (filtered.length === 0) {
+    showMessage(
+      "No matching photos",
+      "Try another search term or clear the search box."
+    );
     return;
   }
 
-  passwordError.textContent = "";
-  passwordInput.value = "";
-  passwordModal.classList.add("open");
+  gallery.innerHTML = "";
 
-  setTimeout(() => passwordInput.focus(), 20);
+  const fragment = document.createDocumentFragment();
+
+  filtered.forEach(photo => {
+    const card = document.createElement("article");
+    card.className = "photo";
+
+    const imageWrap = document.createElement("div");
+    imageWrap.className = "image-wrap";
+
+    const img = document.createElement("img");
+    img.src = photo.previewURL;
+    img.alt = photo.name;
+    img.loading = "lazy";
+    img.decoding = "async";
+
+    img.addEventListener("click", () => openPreview(photo));
+    img.addEventListener("error", () => {
+      imageWrap.innerHTML = "";
+      const message = document.createElement("div");
+      message.className = "image-error";
+      message.textContent = isHeicFile(photo.name)
+        ? "HEIC images may not display in browsers. Convert this photo to JPG or WebP."
+        : "Preview unavailable. Check the file format and filename.";
+      imageWrap.appendChild(message);
+    }, { once: true });
+
+    imageWrap.appendChild(img);
+
+    const info = document.createElement("div");
+    info.className = "photo-info";
+
+    const filename = document.createElement("div");
+    filename.className = "filename";
+    filename.textContent = photo.name;
+    filename.title = photo.name;
+
+    const actions = document.createElement("div");
+    actions.className = "photo-actions";
+
+    const previewButton = document.createElement("button");
+    previewButton.className = "btn";
+    previewButton.textContent = "Preview";
+    previewButton.addEventListener("click", () => openPreview(photo));
+
+    const downloadButton = document.createElement("button");
+    downloadButton.className = "btn primary";
+    downloadButton.textContent = "Save photo";
+    downloadButton.addEventListener("click", () => requestDownload(photo));
+
+    actions.append(previewButton, downloadButton);
+    info.append(filename, actions);
+    card.append(imageWrap, info);
+    fragment.appendChild(card);
+  });
+
+  gallery.appendChild(fragment);
 }
 
-document.getElementById("saveSelected").addEventListener("click", requestPassword);
+function openPreview(photo) {
+  lightboxImage.src = photo.previewURL;
+  lightboxImage.alt = photo.name;
+  lightbox.classList.add("open");
+  document.getElementById("closeLightbox").focus();
+}
 
-document.getElementById("cancelModal").addEventListener("click", () => {
-  passwordModal.classList.remove("open");
-  passwordError.textContent = "";
+function closePreview() {
+  lightbox.classList.remove("open");
+  lightboxImage.src = "";
+}
+
+document.getElementById("closeLightbox")
+  .addEventListener("click", closePreview);
+
+lightbox.addEventListener("click", event => {
+  if (event.target === lightbox) closePreview();
 });
 
+function requestDownload(photo) {
+  pendingDownload = photo;
+  passwordInput.value = "";
+  passwordError.textContent = "";
+  passwordModal.classList.add("open");
+  setTimeout(() => passwordInput.focus(), 50);
+}
+
+function closePasswordDialog() {
+  passwordModal.classList.remove("open");
+  passwordInput.value = "";
+  passwordError.textContent = "";
+  pendingDownload = null;
+}
+
+document.getElementById("cancelPassword")
+  .addEventListener("click", closePasswordDialog);
+
 passwordModal.addEventListener("click", event => {
-  if (event.target === passwordModal) {
-    passwordModal.classList.remove("open");
-  }
+  if (event.target === passwordModal) closePasswordDialog();
 });
 
 document.getElementById("passwordForm").addEventListener("submit", async event => {
   event.preventDefault();
 
-  if (passwordInput.value !== OWNER_PASSWORD) {
-    passwordError.textContent = "Incorrect password. Saving has been cancelled.";
+  if (!pendingDownload) {
+    closePasswordDialog();
+    return;
+  }
+
+  if (passwordInput.value !== CONFIG.password) {
+    passwordError.textContent = "Incorrect password. Download cancelled.";
     passwordInput.select();
     return;
   }
 
-  passwordModal.classList.remove("open");
+  const photo = pendingDownload;
+  passwordError.textContent = "Preparing your download...";
 
-  const toSave = [...selected];
-  let started = 0;
-  let failed = 0;
+  try {
+    /*
+      Fetch the image and create a download link.
+      This works for publicly accessible GitHub files.
+    */
+    const response = await fetch(photo.url);
 
-  for (const filename of toSave) {
+    if (!response.ok) {
+      throw new Error("The image file could not be downloaded.");
+    }
+
+    const blob = await response.blob();
+    const objectURL = URL.createObjectURL(blob);
     const link = document.createElement("a");
-    link.href = imageURL(filename);
-    link.download = filename;
-    link.style.display = "none";
-
-    document.body.append(link);
+    link.href = objectURL;
+    link.download = photo.name;
+    document.body.appendChild(link);
     link.click();
     link.remove();
 
-    started++;
-    await new Promise(resolve => setTimeout(resolve, 300));
-  }
+    setTimeout(() => URL.revokeObjectURL(objectURL), 30000);
+    closePasswordDialog();
 
-  galleryStatus.textContent =
-    `Download requested for ${started} image(s). ` +
-    `If files are missing or downloads are blocked, check your images folder and browser settings.`;
-
-  passwordInput.value = "";
-});
-
-function openLightbox(src, alt) {
-  const box = document.getElementById("lightbox");
-  document.getElementById("lightboxImage").src = src;
-  document.getElementById("lightboxImage").alt = alt;
-  box.classList.add("open");
-}
-
-function closeLightbox() {
-  document.getElementById("lightbox").classList.remove("open");
-}
-
-document.getElementById("closeLightbox").addEventListener("click", closeLightbox);
-
-document.getElementById("lightbox").addEventListener("click", event => {
-  if (event.target.id === "lightbox") {
-    closeLightbox();
+  } catch (error) {
+    console.error("Download error:", error);
+    passwordError.textContent =
+      "Download failed. Check your connection and try again.";
   }
 });
+
+searchInput.addEventListener("input", renderPhotos);
+document.getElementById("refreshButton").addEventListener("click", loadPhotos);
 
 document.addEventListener("keydown", event => {
   if (event.key === "Escape") {
-    passwordModal.classList.remove("open");
-    closeLightbox();
+    closePreview();
+    closePasswordDialog();
   }
 });
 
-searchInput.addEventListener("input", renderGallery);
-filterSelect.addEventListener("change", renderGallery);
-
-renderGallery();
+loadPhotos();
 </script>
 </body>
 </html>
