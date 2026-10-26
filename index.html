@@ -1,55 +1,339 @@
-<!doctype html>
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#10172a">
 <meta name="description" content="A graduation celebration and curated photo gallery.">
 <title>My Graduation | A Milestone Achieved</title>
+
 <style>
-:root{--navy:#10172a;--navy2:#19233b;--gold:#e7bd62;--cream:#fff9ee;--muted:#c9ceda;--line:#ffffff20}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:90px}
-body{margin:0;background:var(--navy);color:var(--cream);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}
-a{color:inherit}.hero{min-height:82vh;display:grid;place-items:center;text-align:center;padding:75px 22px;position:relative;overflow:hidden;background:radial-gradient(ellipse at top,#28395b 0%,#10172a 64%)}
-.hero:before,.hero:after{content:"✦";position:absolute;color:#e7bd6228;font-size:clamp(100px,24vw,280px);line-height:1;pointer-events:none}
-.hero:before{left:-35px;top:4%}.hero:after{right:-20px;bottom:2%;font-size:clamp(80px,18vw,210px)}
-.content{position:relative;z-index:1;max-width:850px}.kicker{color:var(--gold);font-weight:800;letter-spacing:.18em;text-transform:uppercase;font-size:.76rem}
-h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(3rem,9vw,6.5rem);line-height:1.02;margin:18px 0;color:#fff}
-.gold{color:var(--gold)}.subtitle{font-size:clamp(1rem,2.5vw,1.3rem);color:var(--muted);max-width:650px;margin:0 auto 30px}
-.button{display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;background:var(--gold);color:#11182b;padding:13px 23px;border:0;border-radius:999px;font-weight:800;cursor:pointer;transition:transform .2s,filter .2s}.button:hover{transform:translateY(-2px);filter:brightness(1.05)}
-.button.secondary{background:transparent;color:var(--cream);border:1px solid #ffffff42}.button.small{padding:9px 15px;font-size:.9rem}
-section{padding:70px 20px}.wrap{width:min(100%,1120px);margin:auto}
-.section-title{text-align:center;font-family:Georgia,"Times New Roman",serif;font-size:clamp(2rem,5vw,3.2rem);line-height:1.15;margin:0 0 12px}
-.lead{text-align:center;color:var(--muted);max-width:720px;margin:0 auto 30px}
-.video-card{background:var(--navy2);border:1px solid var(--line);border-radius:22px;padding:12px;box-shadow:0 20px 60px #0005}
-video{display:block;width:100%;max-height:72vh;background:#05070d;border-radius:14px}.video-note{text-align:center;color:var(--muted);font-size:.9rem;margin:12px 0 2px}
-.message{background:var(--cream);color:#172039;text-align:center}.message .section-title{color:#172039}.message .kicker{color:#8d6820}.message p{max-width:750px;margin:18px auto;font-size:1.08rem}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:35px}.card{padding:24px 18px;border:1px solid var(--line);border-radius:16px;background:var(--navy2);text-align:center}.card .symbol{font-size:2rem}.card h3{color:var(--gold);margin:8px 0}.card p{color:var(--muted);font-size:.95rem;margin:0}
-.gallery-section{background:linear-gradient(180deg,#10172a,#141e34)}.gallery-tools{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:28px 0 18px}
-.search{flex:1;min-width:200px;background:#0c1222;color:var(--cream);border:1px solid #ffffff2c;border-radius:12px;padding:13px 15px;font:inherit;outline:none}.search:focus,.password-input:focus{border-color:var(--gold)}
-.filter{background:#19233b;color:var(--cream);border:1px solid #ffffff2c;border-radius:12px;padding:12px 14px;font:inherit}
-.gallery-status{color:var(--muted);font-size:.92rem;margin:0 0 14px}
-.gallery{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px}
-.photo{overflow:hidden;border:1px solid var(--line);border-radius:16px;background:#19233b;min-width:0;transition:transform .2s,border-color .2s}.photo:hover{transform:translateY(-3px);border-color:#e7bd6270}
-.photo-image{width:100%;aspect-ratio:4/3;display:block;object-fit:cover;background:linear-gradient(135deg,#28395b,#10172a);cursor:zoom-in}
-.photo-image.missing{object-fit:contain;padding:25px;color:#c9ceda}
-.photo-info{padding:12px}.photo-name{font-weight:750;font-size:.92rem;overflow-wrap:anywhere;margin:0 0 8px}
-.photo-actions{display:flex;align-items:center;justify-content:space-between;gap:8px}.select-label{display:flex;align-items:center;gap:7px;color:var(--muted);font-size:.85rem;cursor:pointer}.select-label input{accent-color:var(--gold);width:17px;height:17px}
-.text-button{background:none;color:var(--gold);border:0;padding:4px 0;font:inherit;font-size:.85rem;cursor:pointer}.text-button:hover{text-decoration:underline}
-.save-panel{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:17px 18px;background:#19233b;border:1px solid #ffffff25;border-radius:16px;margin:0 0 18px}.save-panel p{margin:0;color:var(--muted);font-size:.9rem}.save-panel strong{color:var(--cream)}
-.notice{color:var(--muted);font-size:.9rem;max-width:850px;margin:18px auto 0}
-.empty{grid-column:1/-1;padding:35px;text-align:center;color:var(--muted);border:1px dashed #ffffff35;border-radius:16px}
-footer{text-align:center;padding:28px 18px;color:var(--muted);border-top:1px solid #ffffff18;font-size:.9rem}
-.modal-backdrop{position:fixed;inset:0;background:#050914d9;display:none;place-items:center;padding:18px;z-index:50}.modal-backdrop.open{display:grid}
-.modal{width:min(100%,430px);background:#19233b;border:1px solid #ffffff2b;border-radius:22px;padding:26px;box-shadow:0 25px 80px #0009}.modal h2{font-family:Georgia,serif;margin:0 0 8px;font-size:1.8rem}.modal p{color:var(--muted);margin:0 0 18px}.password-input{width:100%;padding:13px 14px;border-radius:11px;border:1px solid #ffffff38;background:#0c1222;color:white;font:inherit;outline:none}.modal-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px}.error{min-height:1.5em;color:#ffb4a8;font-size:.9rem;margin-top:9px}
-.lightbox{position:fixed;inset:0;display:none;place-items:center;background:#050914f2;padding:24px;z-index:40}.lightbox.open{display:grid}.lightbox img{max-width:min(100%,1100px);max-height:82vh;object-fit:contain}.lightbox-close{position:absolute;right:18px;top:12px;font-size:2rem;color:white;background:transparent;border:0;cursor:pointer}
-@media(max-width:900px){.gallery{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media(max-width:650px){.gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.photo-info{padding:10px}.cards{grid-template-columns:1fr}.hero{min-height:75vh}section{padding:54px 17px}.save-panel{align-items:flex-start}.save-panel .button{width:100%}}
-@media(max-width:380px){.gallery{grid-template-columns:1fr}.photo-image{aspect-ratio:16/10}}
+:root {
+  --navy:#10172a;
+  --navy2:#19233b;
+  --gold:#e7bd62;
+  --cream:#fff9ee;
+  --muted:#c9ceda;
+  --line:#ffffff20;
+}
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; scroll-padding-top:90px; }
+body {
+  margin:0;
+  background:var(--navy);
+  color:var(--cream);
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  line-height:1.6;
+}
+a { color:inherit; }
+.hero {
+  min-height:82vh;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  padding:75px 22px;
+  position:relative;
+  overflow:hidden;
+  background:radial-gradient(ellipse at top,#28395b 0%,#10172a 64%);
+}
+.hero:before,.hero:after {
+  content:"✦";
+  position:absolute;
+  color:#e7bd6228;
+  font-size:clamp(100px,24vw,280px);
+  line-height:1;
+  pointer-events:none;
+}
+.hero:before { left:-35px;top:4%; }
+.hero:after { right:-20px;bottom:2%;font-size:clamp(80px,18vw,210px); }
+.content { position:relative;z-index:1;max-width:850px; }
+.kicker {
+  color:var(--gold);
+  font-weight:800;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  font-size:.76rem;
+}
+h1 {
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(3rem,9vw,6.5rem);
+  line-height:1.02;
+  margin:18px 0;
+  color:#fff;
+}
+.gold { color:var(--gold); }
+.subtitle {
+  font-size:clamp(1rem,2.5vw,1.3rem);
+  color:var(--muted);
+  max-width:650px;
+  margin:0 auto 30px;
+}
+.button {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  text-decoration:none;
+  background:var(--gold);
+  color:#11182b;
+  padding:13px 23px;
+  border:0;
+  border-radius:999px;
+  font-weight:800;
+  cursor:pointer;
+  transition:transform .2s,filter .2s;
+}
+.button:hover { transform:translateY(-2px);filter:brightness(1.05); }
+.button.secondary {
+  background:transparent;
+  color:var(--cream);
+  border:1px solid #ffffff42;
+}
+.button.small { padding:9px 15px;font-size:.9rem; }
+section { padding:70px 20px; }
+.wrap { width:min(100%,1120px);margin:auto; }
+.section-title {
+  text-align:center;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(2rem,5vw,3.2rem);
+  line-height:1.15;
+  margin:0 0 12px;
+}
+.lead {
+  text-align:center;
+  color:var(--muted);
+  max-width:720px;
+  margin:0 auto 30px;
+}
+.video-card {
+  background:var(--navy2);
+  border:1px solid var(--line);
+  border-radius:22px;
+  padding:12px;
+  box-shadow:0 20px 60px #0005;
+}
+video {
+  display:block;
+  width:100%;
+  max-height:72vh;
+  background:#05070d;
+  border-radius:14px;
+}
+.video-note {
+  text-align:center;
+  color:var(--muted);
+  font-size:.9rem;
+  margin:12px 0 2px;
+}
+.message { background:var(--cream);color:#172039;text-align:center; }
+.message .section-title { color:#172039; }
+.message .kicker { color:#8d6820; }
+.message p { max-width:750px;margin:18px auto;font-size:1.08rem; }
+.cards {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+  margin-top:35px;
+}
+.card {
+  padding:24px 18px;
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:var(--navy2);
+  text-align:center;
+}
+.card .symbol { font-size:2rem; }
+.card h3 { color:var(--gold);margin:8px 0; }
+.card p { color:var(--muted);font-size:.95rem;margin:0; }
+.gallery-section { background:linear-gradient(180deg,#10172a,#141e34); }
+.gallery-tools {
+  display:flex;
+  gap:12px;
+  align-items:center;
+  flex-wrap:wrap;
+  margin:28px 0 18px;
+}
+.search {
+  flex:1;
+  min-width:200px;
+  background:#0c1222;
+  color:var(--cream);
+  border:1px solid #ffffff2c;
+  border-radius:12px;
+  padding:13px 15px;
+  font:inherit;
+  outline:none;
+}
+.search:focus,.password-input:focus { border-color:var(--gold); }
+.filter {
+  background:#19233b;
+  color:var(--cream);
+  border:1px solid #ffffff2c;
+  border-radius:12px;
+  padding:12px 14px;
+  font:inherit;
+}
+.gallery-status { color:var(--muted);font-size:.92rem;margin:0 0 14px; }
+.gallery {
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:15px;
+}
+.photo {
+  overflow:hidden;
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:#19233b;
+  min-width:0;
+  transition:transform .2s,border-color .2s;
+}
+.photo:hover { transform:translateY(-3px);border-color:#e7bd6270; }
+.photo-image {
+  width:100%;
+  aspect-ratio:4/3;
+  display:block;
+  object-fit:cover;
+  background:linear-gradient(135deg,#28395b,#10172a);
+  cursor:zoom-in;
+}
+.photo-image.missing { object-fit:contain;padding:25px;color:#c9ceda; }
+.photo-info { padding:12px; }
+.photo-name {
+  font-weight:750;
+  font-size:.92rem;
+  overflow-wrap:anywhere;
+  margin:0 0 8px;
+}
+.photo-actions { display:flex;align-items:center;justify-content:space-between;gap:8px; }
+.select-label {
+  display:flex;
+  align-items:center;
+  gap:7px;
+  color:var(--muted);
+  font-size:.85rem;
+  cursor:pointer;
+}
+.select-label input { accent-color:var(--gold);width:17px;height:17px; }
+.text-button {
+  background:none;
+  color:var(--gold);
+  border:0;
+  padding:4px 0;
+  font:inherit;
+  font-size:.85rem;
+  cursor:pointer;
+}
+.text-button:hover { text-decoration:underline; }
+.save-panel {
+  display:flex;
+  gap:12px;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  padding:17px 18px;
+  background:#19233b;
+  border:1px solid #ffffff25;
+  border-radius:16px;
+  margin:0 0 18px;
+}
+.save-panel p { margin:0;color:var(--muted);font-size:.9rem; }
+.save-panel strong { color:var(--cream); }
+.notice { color:var(--muted);font-size:.9rem;max-width:850px;margin:18px auto 0; }
+.empty {
+  grid-column:1/-1;
+  padding:35px;
+  text-align:center;
+  color:var(--muted);
+  border:1px dashed #ffffff35;
+  border-radius:16px;
+}
+footer {
+  text-align:center;
+  padding:28px 18px;
+  color:var(--muted);
+  border-top:1px solid #ffffff18;
+  font-size:.9rem;
+}
+.modal-backdrop {
+  position:fixed;
+  inset:0;
+  background:#050914d9;
+  display:none;
+  place-items:center;
+  padding:18px;
+  z-index:50;
+}
+.modal-backdrop.open { display:grid; }
+.modal {
+  width:min(100%,430px);
+  background:#19233b;
+  border:1px solid #ffffff2b;
+  border-radius:22px;
+  padding:26px;
+  box-shadow:0 25px 80px #0009;
+}
+.modal h2 { font-family:Georgia,serif;margin:0 0 8px;font-size:1.8rem; }
+.modal p { color:var(--muted);margin:0 0 18px; }
+.password-input {
+  width:100%;
+  padding:13px 14px;
+  border-radius:11px;
+  border:1px solid #ffffff38;
+  background:#0c1222;
+  color:white;
+  font:inherit;
+  outline:none;
+}
+.modal-actions { display:flex;gap:10px;flex-wrap:wrap;margin-top:15px; }
+.error { min-height:1.5em;color:#ffb4a8;font-size:.9rem;margin-top:9px; }
+.lightbox {
+  position:fixed;
+  inset:0;
+  display:none;
+  place-items:center;
+  background:#050914f2;
+  padding:24px;
+  z-index:40;
+}
+.lightbox.open { display:grid; }
+.lightbox img {
+  max-width:min(100%,1100px);
+  max-height:82vh;
+  object-fit:contain;
+}
+.lightbox-close {
+  position:absolute;
+  right:18px;
+  top:12px;
+  font-size:2rem;
+  color:white;
+  background:transparent;
+  border:0;
+  cursor:pointer;
+}
+@media(max-width:900px) {
+  .gallery { grid-template-columns:repeat(3,minmax(0,1fr)); }
+}
+@media(max-width:650px) {
+  .gallery { grid-template-columns:repeat(2,minmax(0,1fr));gap:10px; }
+  .photo-info { padding:10px; }
+  .cards { grid-template-columns:1fr; }
+  .hero { min-height:75vh; }
+  section { padding:54px 17px; }
+  .save-panel { align-items:flex-start; }
+  .save-panel .button { width:100%; }
+}
+@media(max-width:380px) {
+  .gallery { grid-template-columns:1fr; }
+  .photo-image { aspect-ratio:16/10; }
+}
 </style>
 </head>
+
 <body>
+
 <header class="hero">
   <div class="content">
     <div class="kicker">A journey of courage, faith & determination</div>
@@ -67,7 +351,7 @@ footer{text-align:center;padding:28px 18px;color:var(--muted);border-top:1px sol
     <div class="video-card">
       <video controls playsinline preload="metadata">
         <source src="graduation-video.mp4" type="video/mp4">
-        Your browser does not support HTML video. Please open this page in a modern browser.
+        Your browser does not support HTML video.
       </video>
       <p class="video-note">Your graduation video · Turn the sound on and enjoy the moment.</p>
     </div>
@@ -100,23 +384,31 @@ footer{text-align:center;padding:28px 18px;color:var(--muted);border-top:1px sol
   <div class="wrap">
     <div class="kicker" style="text-align:center">A curated collection</div>
     <h2 class="section-title">Photo <span class="gold">Gallery.</span></h2>
-    <p class="lead">Browse the collection, search by filename, and select the images you want to save.</p>
+    <p class="lead">Browse your collection, search by filename, preview photos, and select images to save.</p>
+
     <div class="gallery-tools">
       <input class="search" id="search" type="search" placeholder="Search photos…" aria-label="Search photos">
       <select class="filter" id="filter" aria-label="Filter photos">
-        <option value="all">All 120 photos</option>
+        <option value="all">All photos</option>
         <option value="a-m">A–M</option>
         <option value="n-z">N–Z</option>
       </select>
     </div>
+
     <div class="save-panel">
-      <div><strong><span id="selectedCount">0</span> selected</strong><p>Select photos, then enter the owner password to unlock the save action.</p></div>
-      <button class="button" id="saveSelected">🔒 Save selected images</button>
+      <div>
+        <strong><span id="selectedCount">0</span> selected</strong>
+        <p>Select photos, then enter the owner password to unlock saving.</p>
+      </div>
+      <button class="button" id="saveSelected" type="button">🔒 Save selected images</button>
     </div>
-    <p class="gallery-status" id="galleryStatus" aria-live="polite">Showing 120 photos.</p>
+
+    <p class="gallery-status" id="galleryStatus" aria-live="polite">Loading photos…</p>
     <div class="gallery" id="galleryGrid"></div>
-    <p class="notice"><strong>Image setup:</strong> Put all 120 image files inside a folder named <code>images</code> beside this HTML file. The filenames must match exactly. If a file is missing, its card will show a placeholder until you add it.</p>
-    <p class="notice"><strong>Privacy note:</strong> This HTML-only password gate is a convenience feature, not strong security. Anyone who can access the public image URLs may still download those images. For real owner-only access, store the originals behind server-side authentication or private storage.</p>
+
+    <p class="notice"><strong>Image setup:</strong> Put all the image files inside a folder named <code>images</code> beside this HTML file. Every filename must match exactly, including uppercase/lowercase letters, spaces, and extensions.</p>
+    <p class="notice"><strong>HEIC note:</strong> Some browsers cannot preview HEIC files. For reliable gallery previews, convert HEIC images to JPG or WebP. Keep the original HEIC files if you need to save them in their original format.</p>
+    <p class="notice"><strong>Privacy:</strong> This HTML-only password gate is a convenience feature, not strong security. The password is visible in the page's JavaScript, and public image URLs may still be downloaded. Genuine owner-only access requires server-side authentication or private storage.</p>
   </div>
 </section>
 
@@ -125,7 +417,7 @@ footer{text-align:center;padding:28px 18px;color:var(--muted);border-top:1px sol
 <div class="modal-backdrop" id="passwordModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
   <div class="modal">
     <h2 id="modalTitle">Owner verification</h2>
-    <p>Enter the owner password to unlock the save action for your selected photos.</p>
+    <p>Enter the owner password to unlock saving for your selected photos.</p>
     <form id="passwordForm">
       <input class="password-input" id="passwordInput" type="password" autocomplete="current-password" placeholder="Enter password" aria-label="Owner password" required>
       <div class="error" id="passwordError" aria-live="polite"></div>
@@ -143,154 +435,385 @@ footer{text-align:center;padding:28px 18px;color:var(--muted);border-top:1px sol
 </div>
 
 <script>
-const photoNames = ["golden-sunset", "blue-horizon", "silent-mountain", "urban-dream", "crystal-moment", "royal-vision", "silver-cloud", "hidden-beauty", "bright-morning", "velvet-sky", "diamond-light", "peaceful-valley", "wildflower-mood", "ocean-breeze", "midnight-glow", "amber-leaves", "dreamy-landscape", "soft-focus", "radiant-smile", "gentle-waves", "sunrise-glory", "emerald-garden", "winter-whisper", "summer-bloom", "autumn-colors", "lunar-shadow", "stellar-view", "magic-hour", "copper-sky", "frozen-moment", "classic-charm", "modern-elegance", "natural-wonder", "urban-lights", "timeless-frame", "purple-dusk", "desert-mirage", "oasis-view", "morning-dew", "rainbow-trail", "mystic-forest", "coastal-charm", "velvet-rose", "scarlet-petal", "ivory-glow", "coral-dream", "sapphire-night", "ruby-reflection", "jade-garden", "pearl-shimmer", "silver-lining", "golden-meadow", "cloud-nine", "blue-lagoon", "wild-spirit", "quiet-moment", "happy-trails", "endless-summer", "fresh-perspective", "vivid-colors", "secret-garden", "dream-catcher", "bright-spark", "soft-sunshine", "moonlit-path", "starlight-scene", "gentle-bloom", "frosted-glass", "sun-kissed", "misty-morning", "radiant-horizon", "noble-presence", "elegant-frame", "pure-serenity", "bold-expression", "happy-memories", "true-colors", "glowing-pixels", "artful-capture", "charming-view", "precious-scene", "lively-moments", "peaceful-place", "nature-canvas", "cosmic-beauty", "timeless-magic", "distant-shores", "blossom-trail", "crimson-dawn", "azure-skies", "golden-hour", "lively-portrait", "perfect-pose", "classic-moment", "vivid-harmony", "serene-reflection", "bright-outlook", "hidden-treasure", "open-meadow", "ocean-mystery", "summer-whisper", "autumn-glow", "radiant-petals", "moonlight-dream", "city-symphony", "forest-echo", "velvet-dawn", "crystal-waters", "heavenly-view", "infinite-blue", "chasing-light", "wonderland-scene", "glimmering-star", "daylight-story", "dreamscape-view", "lasting-impression", "beautiful-journey", "unique-perspective", "golden-reflections", "endless-horizon"];
-const galleryGrid = document.getElementById('galleryGrid');
-const searchInput = document.getElementById('search');
-const filterSelect = document.getElementById('filter');
-const selectedCount = document.getElementById('selectedCount');
-const galleryStatus = document.getElementById('galleryStatus');
-const passwordModal = document.getElementById('passwordModal');
-const passwordInput = document.getElementById('passwordInput');
-const passwordError = document.getElementById('passwordError');
+/*
+  IMAGE FILENAMES
+  All names below are kept exactly as supplied.
+  Files must be inside the images folder next to index.html.
+*/
+const photoFiles = [
+  "RELENTLESS  (69).heic",
+  "RELENTLESS  (70).heic",
+  "RELENTLESS  (71).heic",
+  "RELENTLESS  (72).heic",
+  "amber-leaves.jpg.jpg",
+  "artful-capture.jpg.JPG",
+  "autumn-colors.jpg.heic",
+  "autumn-glow.jpg.heic",
+  "azure-skies.jpg.heic",
+  "beautiful-journey.jpg.heic",
+  "blossom-trail.jpg.heic",
+  "blue-horizon.jpg.heic",
+  "blue-lagoon.jpg.heic",
+  "bold-expression.jpg.JPG",
+  "bright-morning.jpg.jpg",
+  "bright-outlook.jpg.heic",
+  "bright-spark.jpg.JPG",
+  "charming-view.jpg.heic",
+  "chasing-light.jpg.jpg",
+  "city-symphony.jpg.heic",
+  "classic-charm.jpg.heic",
+  "classic-moment.jpg.heic",
+  "cloud-nine.jpg.png",
+  "copper-sky.jpg.png",
+  "coral-dream.jpg.jpg",
+  "cosmic-beauty.jpg.heic",
+  "crimson-dawn.jpg.heic",
+  "crystal-moment.jpg.png",
+  "crystal-waters.jpg.heic",
+  "desert-mirage.jpg.png",
+  "diamond-light.jpg.png",
+  "distant-shores.jpg.jpg",
+  "dream-catcher.jpg.heic",
+  "dreamscape-view.jpg.jpg",
+  "dreamy-landscape.jpg.png",
+  "elegant-frame.jpg.heic",
+  "emerald-garden.jpg.heic",
+  "endless-summer.jpg.heic",
+  "forest-echo.jpg.heic",
+  "fresh-perspective.jpg.png",
+  "frosted-glass.jpg.heic",
+  "frozen-moment.jpg.heic",
+  "gentle-bloom.jpg.heic",
+  "glimmering-star.jpg.heic",
+  "glowing-pixels.jpg.heic",
+  "golden-hour.jpg.jpg",
+  "golden-meadow.jpg.heic",
+  "golden-sunset.jpg.heic",
+  "happy-memories.jpg.heic",
+  "happy-trails.jpg.JPG",
+  "heavenly-view.jpg.heic",
+  "hidden-beauty.jpg.jpg",
+  "hidden-treasure.jpg.heic",
+  "infinite-blue.jpg.heic",
+  "ivory-glow.jpg.JPG",
+  "jade-garden.jpg.heic",
+  "lasting-impression.jpg.heic",
+  "lively-moments.jpg.heic",
+  "lively-portrait.jpg.heic",
+  "lunar-shadow.jpg.heic",
+  "magic-hour.jpg.jpg",
+  "midnight-glow.jpg.JPG",
+  "misty-morning.jpg.heic",
+  "modern-elegance.jpg.jpg",
+  "moonlight-dream.jpg.heic",
+  "moonlit-path.jpg.png",
+  "morning-dew.jpg.JPG",
+  "mystic-forest.jpg.png",
+  "natural-wonder.jpg.JPG",
+  "nature-canvas.jpg.heic",
+  "noble-presence.jpg.heic",
+  "oasis-view.jpg.heic",
+  "ocean-breeze.jpg.heic",
+  "ocean-mystery.jpg.heic",
+  "open-meadow.jpg.jpg",
+  "peaceful-place.jpg.JPG",
+  "peaceful-valley.jpg.jpg",
+  "pearl-shimmer.jpg.jpg",
+  "perfect-pose.jpg.heic",
+  "precious-scene.jpg.heic",
+  "pure-serenity.jpg.heic",
+  "purple-dusk.jpg.jpg",
+  "quiet-moment.jpg.heic",
+  "radiant-horizon.jpg.png",
+  "radiant-petals.jpg.jpg",
+  "radiant-smile.jpg.heic",
+  "rainbow-trail.jpg.jpg",
+  "royal-vision.jpg.heic",
+  "ruby-reflection.jpg.heic",
+  "sapphire-night.jpg.png",
+  "scarlet-petal.jpg.heic",
+  "secret-garden.jpg.heic",
+  "serene-reflection.jpg.heic",
+  "silent-mountain.jpg.JPG",
+  "silver-cloud.jpg.heic",
+  "silver-lining.jpg.JPG",
+  "soft-focus.jpg.heic",
+  "soft-sunshine.jpg.heic",
+  "starlight-scene.jpg.heic",
+  "stellar-view.jpg.JPG",
+  "summer-bloom.jpg.jpg",
+  "summer-whisper.jpg.heic",
+  "sun-kissed.jpg.JPG",
+  "sunrise-glory.jpg.JPG",
+  "timeless-frame.jpg.heic",
+  "timeless-magic.jpg.heic",
+  "true-colors.jpg.heic",
+  "unique-perspective.jpg.jpg",
+  "urban-dream.jpg.jpg",
+  "urban-lights.jpg.heic",
+  "velvet-dawn.jpg.jpg",
+  "velvet-rose.jpg.heic",
+  "velvet-sky.jpg.heic",
+  "vivid-colors.jpg.heic",
+  "vivid-harmony.jpg.jpg",
+  "wild-spirit.jpg.heic",
+  "wildflower-mood.jpg.heic",
+  "winter-whisper.jpg.png",
+  "wonderland-scene.jpg.heic"
+];
+
+const OWNER_PASSWORD = "GEOFRY";
+const IMAGE_FOLDER = "images/";
+
+const galleryGrid = document.getElementById("galleryGrid");
+const searchInput = document.getElementById("search");
+const filterSelect = document.getElementById("filter");
+const selectedCount = document.getElementById("selectedCount");
+const galleryStatus = document.getElementById("galleryStatus");
+const passwordModal = document.getElementById("passwordModal");
+const passwordInput = document.getElementById("passwordInput");
+const passwordError = document.getElementById("passwordError");
+
 const selected = new Set();
 
-function makePhotoCard(name) {
-  const card = document.createElement('article');
-  card.className = 'photo';
-  card.dataset.name = name;
-  const img = document.createElement('img');
-  img.className = 'photo-image';
-  img.src = `images/${name}.jpg`;
-  img.alt = name.replaceAll('-', ' ');
-  img.loading = 'lazy';
-  img.addEventListener('click', () => openLightbox(img.src, img.alt));
-  img.addEventListener('error', () => {
-    img.classList.add('missing');
-    img.alt = `Image file missing: ${name}.jpg`;
-    img.src = 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(
-      `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450"><rect width="600" height="450" fill="#19233b"/><text x="300" y="205" fill="#e7bd62" font-size="34" text-anchor="middle">PHOTO PREVIEW</text><text x="300" y="255" fill="#c9ceda" font-size="22" text-anchor="middle">Add ${name}.jpg to images/</text></svg>`
-    );
-    img.style.cursor = 'default';
-    img.onclick = null;
-  }, {once:true});
-  const info = document.createElement('div');
-  info.className = 'photo-info';
-  const title = document.createElement('p');
-  title.className = 'photo-name';
-  title.textContent = name + '.jpg';
-  const actions = document.createElement('div');
-  actions.className = 'photo-actions';
-  const label = document.createElement('label');
-  label.className = 'select-label';
-  const checkbox = document.createElement('input');
-  checkbox.type = 'checkbox';
-  checkbox.checked = selected.has(name);
-  checkbox.setAttribute('aria-label', `Select ${name}.jpg`);
-  checkbox.addEventListener('change', () => {
-    if (checkbox.checked) selected.add(name); else selected.delete(name);
+function imageURL(filename) {
+  return IMAGE_FOLDER + encodeURIComponent(filename).replace(/%2F/gi, "/");
+}
+
+function displayName(filename) {
+  return filename;
+}
+
+function makePlaceholder(filename) {
+  return "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(`
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450">
+      <rect width="600" height="450" fill="#19233b"/>
+      <text x="300" y="190" fill="#e7bd62" font-size="30" text-anchor="middle">PHOTO PREVIEW</text>
+      <text x="300" y="235" fill="#c9ceda" font-size="17" text-anchor="middle">Preview unavailable</text>
+      <text x="300" y="275" fill="#c9ceda" font-size="13" text-anchor="middle">${escapeSVG(filename)}</text>
+    </svg>
+  `);
+}
+
+function escapeSVG(value) {
+  return String(value).replace(/[&<>"']/g, char => ({
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&apos;"
+  })[char]);
+}
+
+function makePhotoCard(filename) {
+  const card = document.createElement("article");
+  card.className = "photo";
+  card.dataset.name = filename;
+
+  const img = document.createElement("img");
+  img.className = "photo-image";
+  img.src = imageURL(filename);
+  img.alt = displayName(filename);
+  img.loading = "lazy";
+
+  img.addEventListener("click", () => {
+    if (!img.classList.contains("missing")) {
+      openLightbox(img.src, filename);
+    }
+  });
+
+  img.addEventListener("error", () => {
+    img.classList.add("missing");
+    img.src = makePlaceholder(filename);
+    img.alt = "Preview unavailable: " + filename;
+    img.style.cursor = "default";
+  }, { once:true });
+
+  const info = document.createElement("div");
+  info.className = "photo-info";
+
+  const title = document.createElement("p");
+  title.className = "photo-name";
+  title.textContent = displayName(filename);
+
+  const actions = document.createElement("div");
+  actions.className = "photo-actions";
+
+  const label = document.createElement("label");
+  label.className = "select-label";
+
+  const checkbox = document.createElement("input");
+  checkbox.type = "checkbox";
+  checkbox.checked = selected.has(filename);
+  checkbox.setAttribute("aria-label", "Select " + filename);
+
+  checkbox.addEventListener("change", () => {
+    if (checkbox.checked) {
+      selected.add(filename);
+    } else {
+      selected.delete(filename);
+    }
     updateSelectedCount();
   });
-  label.append(checkbox, document.createTextNode(' Select'));
-  const saveOne = document.createElement('button');
-  saveOne.className = 'text-button';
-  saveOne.type = 'button';
-  saveOne.textContent = 'Save';
-  saveOne.addEventListener('click', () => {
-    selected.add(name);
+
+  label.append(checkbox, document.createTextNode(" Select"));
+
+  const saveOne = document.createElement("button");
+  saveOne.className = "text-button";
+  saveOne.type = "button";
+  saveOne.textContent = "Save";
+
+  saveOne.addEventListener("click", () => {
+    selected.add(filename);
     updateSelectedCount();
     requestPassword();
   });
+
   actions.append(label, saveOne);
   info.append(title, actions);
   card.append(img, info);
+
   return card;
 }
 
 function renderGallery() {
   const query = searchInput.value.trim().toLowerCase();
   const range = filterSelect.value;
-  const filtered = photoNames.filter(name => {
-    const matchesSearch = name.replaceAll('-', ' ').includes(query) || name.includes(query);
-    const first = name[0].toLowerCase();
-    const matchesRange = range === 'all' || (range === 'a-m' ? first >= 'a' && first <= 'm' : first >= 'n' && first <= 'z');
+
+  const filtered = photoFiles.filter(filename => {
+    const lower = filename.toLowerCase();
+    const matchesSearch = lower.includes(query);
+
+    const first = filename.trimStart().charAt(0).toLowerCase();
+    const matchesRange =
+      range === "all" ||
+      (range === "a-m" && first >= "a" && first <= "m") ||
+      (range === "n-z" && first >= "n" && first <= "z");
+
     return matchesSearch && matchesRange;
   });
+
   galleryGrid.replaceChildren();
+
   if (!filtered.length) {
-    const empty = document.createElement('div');
-    empty.className = 'empty';
-    empty.textContent = 'No photos match your search.';
+    const empty = document.createElement("div");
+    empty.className = "empty";
+    empty.textContent = "No photos match your search.";
     galleryGrid.append(empty);
   } else {
-    filtered.forEach(name => galleryGrid.append(makePhotoCard(name)));
+    filtered.forEach(filename => {
+      galleryGrid.append(makePhotoCard(filename));
+    });
   }
-  galleryStatus.textContent = `Showing ${filtered.length} of ${photoNames.length} photos.`;
+
+  galleryStatus.textContent =
+    `Showing ${filtered.length} of ${photoFiles.length} photos.`;
+
   updateSelectedCount();
 }
+
 function updateSelectedCount() {
   selectedCount.textContent = selected.size;
-  document.querySelectorAll('.photo').forEach(card => {
+
+  document.querySelectorAll(".photo").forEach(card => {
     const checkbox = card.querySelector('input[type="checkbox"]');
-    if (checkbox) checkbox.checked = selected.has(card.dataset.name);
+    if (checkbox) {
+      checkbox.checked = selected.has(card.dataset.name);
+    }
   });
 }
+
 function requestPassword() {
   if (selected.size === 0) {
-    galleryStatus.textContent = 'Select at least one photo before saving.';
+    galleryStatus.textContent = "Select at least one photo before saving.";
     return;
   }
-  passwordError.textContent = '';
-  passwordInput.value = '';
-  passwordModal.classList.add('open');
+
+  passwordError.textContent = "";
+  passwordInput.value = "";
+  passwordModal.classList.add("open");
+
   setTimeout(() => passwordInput.focus(), 20);
 }
-document.getElementById('saveSelected').addEventListener('click', requestPassword);
-document.getElementById('cancelModal').addEventListener('click', () => passwordModal.classList.remove('open'));
-passwordModal.addEventListener('click', event => {
-  if (event.target === passwordModal) passwordModal.classList.remove('open');
+
+document.getElementById("saveSelected").addEventListener("click", requestPassword);
+
+document.getElementById("cancelModal").addEventListener("click", () => {
+  passwordModal.classList.remove("open");
+  passwordError.textContent = "";
 });
-document.getElementById('passwordForm').addEventListener('submit', async event => {
+
+passwordModal.addEventListener("click", event => {
+  if (event.target === passwordModal) {
+    passwordModal.classList.remove("open");
+  }
+});
+
+document.getElementById("passwordForm").addEventListener("submit", async event => {
   event.preventDefault();
-  if (passwordInput.value !== 'GEOFRY') {
-    passwordError.textContent = 'Incorrect password. Saving has been cancelled.';
+
+  if (passwordInput.value !== OWNER_PASSWORD) {
+    passwordError.textContent = "Incorrect password. Saving has been cancelled.";
     passwordInput.select();
     return;
   }
-  passwordModal.classList.remove('open');
+
+  passwordModal.classList.remove("open");
+
   const toSave = [...selected];
   let started = 0;
-  for (const name of toSave) {
-    const link = document.createElement('a');
-    link.href = `images/${name}.jpg`;
-    link.download = `${name}.jpg`;
-    link.style.display = 'none';
+  let failed = 0;
+
+  for (const filename of toSave) {
+    const link = document.createElement("a");
+    link.href = imageURL(filename);
+    link.download = filename;
+    link.style.display = "none";
+
     document.body.append(link);
     link.click();
     link.remove();
+
     started++;
-    await new Promise(resolve => setTimeout(resolve, 250));
+    await new Promise(resolve => setTimeout(resolve, 300));
   }
-  galleryStatus.textContent = `Save requested for ${started} image(s). Your browser may ask permission for multiple downloads. Missing files cannot be saved.`;
+
+  galleryStatus.textContent =
+    `Download requested for ${started} image(s). ` +
+    `If files are missing or downloads are blocked, check your images folder and browser settings.`;
+
+  passwordInput.value = "";
 });
+
 function openLightbox(src, alt) {
-  const box = document.getElementById('lightbox');
-  document.getElementById('lightboxImage').src = src;
-  document.getElementById('lightboxImage').alt = alt;
-  box.classList.add('open');
+  const box = document.getElementById("lightbox");
+  document.getElementById("lightboxImage").src = src;
+  document.getElementById("lightboxImage").alt = alt;
+  box.classList.add("open");
 }
-function closeLightbox() { document.getElementById('lightbox').classList.remove('open'); }
-document.getElementById('closeLightbox').addEventListener('click', closeLightbox);
-document.getElementById('lightbox').addEventListener('click', event => {
-  if (event.target.id === 'lightbox') closeLightbox();
-});
-document.addEventListener('keydown', event => {
-  if (event.key === 'Escape') {
-    passwordModal.classList.remove('open');
+
+function closeLightbox() {
+  document.getElementById("lightbox").classList.remove("open");
+}
+
+document.getElementById("closeLightbox").addEventListener("click", closeLightbox);
+
+document.getElementById("lightbox").addEventListener("click", event => {
+  if (event.target.id === "lightbox") {
     closeLightbox();
   }
 });
-searchInput.addEventListener('input', renderGallery);
-filterSelect.addEventListener('change', renderGallery);
+
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape") {
+    passwordModal.classList.remove("open");
+    closeLightbox();
+  }
+});
+
+searchInput.addEventListener("input", renderGallery);
+filterSelect.addEventListener("change", renderGallery);
+
 renderGallery();
 </script>
 </body>
